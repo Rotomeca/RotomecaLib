@@ -1,3 +1,7 @@
 .vs
 obj
 bin
+.vs/RotomecaLib/v16/.suo
+bin/Release/netstandard2.0/RotomecaLib.deps.json
+*.pdb
+*.cache
