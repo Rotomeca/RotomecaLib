@@ -1,0 +1,9 @@
+F:\Rotomeca\Projets\Librairies\C#\RotomecaLib\bin\Release\netstandard2.0\RotomecaLib.deps.json
+F:\Rotomeca\Projets\Librairies\C#\RotomecaLib\bin\Release\netstandard2.0\RotomecaLib.dll
+F:\Rotomeca\Projets\Librairies\C#\RotomecaLib\bin\Release\netstandard2.0\RotomecaLib.pdb
+F:\Rotomeca\Projets\Librairies\C#\RotomecaLib\obj\Release\netstandard2.0\RotomecaLib.csprojAssemblyReference.cache
+F:\Rotomeca\Projets\Librairies\C#\RotomecaLib\obj\Release\netstandard2.0\RotomecaLib.csproj.CoreCompileInputs.cache
+F:\Rotomeca\Projets\Librairies\C#\RotomecaLib\obj\Release\netstandard2.0\RotomecaLib.AssemblyInfoInputs.cache
+F:\Rotomeca\Projets\Librairies\C#\RotomecaLib\obj\Release\netstandard2.0\RotomecaLib.AssemblyInfo.cs
+F:\Rotomeca\Projets\Librairies\C#\RotomecaLib\obj\Release\netstandard2.0\RotomecaLib.dll
+F:\Rotomeca\Projets\Librairies\C#\RotomecaLib\obj\Release\netstandard2.0\RotomecaLib.pdb
