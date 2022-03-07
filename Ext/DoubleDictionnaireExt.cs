@@ -14,9 +14,9 @@ namespace System.Linq
     {
       return t.EnDoubleDictionnaire(key, value);
     }
-    public static RotomecaLib.Classes.DoubleDictionnaire<Cle1, Cle2, Valeur> EnDoubleDictionnaire<Objet, Cle1, Cle2, Valeur>(this IEnumerable<Objet> t, Func<Objet, (Cle1, Cle2)> key, Func<Objet, Valeur> value)
+    public static RotomecaLib.DoubleDictionnaire<Cle1, Cle2, Valeur> EnDoubleDictionnaire<Objet, Cle1, Cle2, Valeur>(this IEnumerable<Objet> t, Func<Objet, (Cle1, Cle2)> key, Func<Objet, Valeur> value)
     {
-      return new RotomecaLib.Classes.DoubleDictionnaire<Cle1, Cle2, Valeur>(t.ToDictionary(key, value));
+      return new RotomecaLib.DoubleDictionnaire<Cle1, Cle2, Valeur>(t.ToDictionary(key, value));
     }
 
     public static IEnumerable<KeyValuePair<(Key1, Key2), Value>> Where<Key1, Key2, Value>(this RotomecaLib.Interfaces.IDoubleDictionnaire<Key1, Key2, Value> t, Func<Key1, Key2, Value, bool> where)

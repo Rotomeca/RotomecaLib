@@ -4,7 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using RotomecaLib.Interfaces;
 
-namespace RotomecaLib.Classes
+namespace RotomecaLib
 {
 
   public class Retour : IRetour

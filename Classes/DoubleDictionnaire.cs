@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace RotomecaLib.Classes
+namespace RotomecaLib
 {
-  public class DoubleDictionnaire<TCle1, TCle2, TValue> : Abstraite.ADoubleDictionnaire<TCle1, TCle2, TValue>
+  public class DoubleDictionnaire<TCle1, TCle2, TValue> : Classes.Abstraite.ADoubleDictionnaire<TCle1, TCle2, TValue>
   {
     public DoubleDictionnaire() : base(new Dictionary<(TCle1, TCle2), TValue>())
     {
@@ -21,7 +21,7 @@ namespace RotomecaLib.Classes
 
     }
 
-    public DoubleDictionnaire(Abstraite.ADoubleDictionnaire<TCle1, TCle2, TValue> datas) : base(new Dictionary<(TCle1, TCle2), TValue>(datas))
+    public DoubleDictionnaire(Classes.Abstraite.ADoubleDictionnaire<TCle1, TCle2, TValue> datas) : base(new Dictionary<(TCle1, TCle2), TValue>(datas))
     {
 
     }

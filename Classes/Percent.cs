@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace RotomecaLib.Classes
+namespace RotomecaLib
 {
   /// <summary>
   /// Pourcentage entre 0 et 100 (entier).

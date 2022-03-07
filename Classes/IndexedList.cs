@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 
-namespace RotomecaLib.Classes
+namespace RotomecaLib
 {
   public class IndexedList<T> : IList<ObjetIndexe<T>>
   {

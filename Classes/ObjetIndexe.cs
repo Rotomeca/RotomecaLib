@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace RotomecaLib.Classes
+namespace RotomecaLib
 {
   public abstract class ObjetIndexe
   {

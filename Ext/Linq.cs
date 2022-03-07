@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using RotomecaLib.Classes;
+﻿using System.Collections.Generic;
+using RotomecaLib;
 
 namespace System.Linq
 {
