@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace RotomecaLib.Classes
+namespace RotomecaLib
 {
     public class MinMax<T> : Interfaces.IMinMax<T>
     {
