@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace RotomecaLib
 {
-  public class IndexedList<T> : IList<ObjetIndexe<T>>
+  public class IndexedList<T> : RotomecaObject, IList<ObjetIndexe<T>>
   {
     List<ObjetIndexe<T>> _datas;
 

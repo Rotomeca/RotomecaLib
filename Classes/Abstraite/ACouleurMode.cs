@@ -7,7 +7,7 @@ namespace RotomecaLib.Classes.Abstraite
     /// <summary>
     /// Mode de couleur pour les classes de couleurs
     /// </summary>
-    public abstract class ACouleurMode : Interfaces.ICouleurMode
+    public abstract class ACouleurMode : RotomecaObject, Interfaces.ICouleurMode
     {
         protected DoubleMinMax _rouge;
         protected DoubleMinMax _vert;

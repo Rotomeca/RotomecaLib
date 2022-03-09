@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RotomecaLib
 {
-    public class MinMax<T> : Interfaces.IMinMax<T>
+    public class MinMax<T> : RotomecaObject, Interfaces.IMinMax<T>
     {
         private T _valeur;
         protected Delegates.VerificationMinMax<T> _verificationMin;

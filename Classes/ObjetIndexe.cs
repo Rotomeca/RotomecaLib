@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RotomecaLib
 {
-  public abstract class ObjetIndexe
+  public abstract class ObjetIndexe : RotomecaObject
   {
     public uint Index { get; set; }
     

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RotomecaLib.Classes.Abstraite
 {
-    public abstract class ACouleurRVB<CouleurMode> : Interfaces.IRVBCouleur, IEquatable<ACouleurRVB<CouleurMode>> where CouleurMode : Interfaces.ICouleurMode
+    public abstract class ACouleurRVB<CouleurMode> : RotomecaObject, Interfaces.IRVBCouleur, IEquatable<ACouleurRVB<CouleurMode>> where CouleurMode : Interfaces.ICouleurMode
     {
         Structures.Couleur _rvb;
         CouleurMode _config;

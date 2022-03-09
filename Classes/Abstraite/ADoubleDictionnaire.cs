@@ -6,7 +6,7 @@ using RotomecaLib.Interfaces;
 
 namespace RotomecaLib.Classes.Abstraite
 {
-  public abstract class ADoubleDictionnaire<TCle1, TCle2, TValeur> : IDoubleDictionnaire<TCle1, TCle2, TValeur>
+  public abstract class ADoubleDictionnaire<TCle1, TCle2, TValeur> : RotomecaObject, IDoubleDictionnaire<TCle1, TCle2, TValeur>
   {
     IDictionary<(TCle1, TCle2), TValeur> _datas;
 

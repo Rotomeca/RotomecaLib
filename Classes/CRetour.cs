@@ -7,7 +7,7 @@ using RotomecaLib.Interfaces;
 namespace RotomecaLib
 {
 
-  public class Retour : IRetour
+  public class Retour : RotomecaObject, IRetour
   {
     public delegate bool GestionRetourErreur(Retour retour);
 
@@ -116,7 +116,7 @@ namespace RotomecaLib
 
   }
 
-  public class RetourVide : IRetour
+  public class RetourVide : RotomecaObject, IRetour
   {
     public Exception Erreur => null;
 
@@ -135,7 +135,7 @@ namespace RotomecaLib
 
   }
 
-  public class RetourAsync : IRetour
+  public class RetourAsync : RotomecaObject, IRetour
   {
     IRetour retour;
 

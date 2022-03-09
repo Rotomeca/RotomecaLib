@@ -7,7 +7,7 @@ namespace RotomecaLib
   /// <summary>
   /// Pourcentage entre 0 et 100 (entier).
   /// </summary>
-  public sealed class Percent : IComparable, IComparable<Percent>, IConvertible, IEquatable<Percent>
+  public sealed class Percent : RotomecaObject, IComparable, IComparable<Percent>, IConvertible, IEquatable<Percent>
   {
     sealed class PercentProvider : IFormatProvider
     {

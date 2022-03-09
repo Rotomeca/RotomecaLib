@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RotomecaLib
 {
-  public class Encyclopedie<TCle, TValeur> : IDictionary<TCle, TValeur>
+  public class Encyclopedie<TCle, TValeur> : RotomecaObject, IDictionary<TCle, TValeur>
   {
     ConcurrentDictionary<TCle, TValeur> _datas;
     IDictionary<TCle, TValeur> _interfaceDatas => _datas;
