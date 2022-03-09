@@ -7,7 +7,7 @@ namespace RotomecaLib
     public static class Aleatoire
     {
         static Random _random = null;
-        public static Random Random
+        public static Random Alea
         {
             get
             {
@@ -24,7 +24,7 @@ namespace RotomecaLib
 
         public static int Nombre(int min, int max)
         {
-            return Random.Next(min, max);
+            return Alea.Next(min, max);
         }
 
         public static double Nombre(int seed)
@@ -35,7 +35,7 @@ namespace RotomecaLib
 
         public static double Nombre()
         {
-            return Random.NextDouble();
+            return Alea.NextDouble();
         }
     }
 }
