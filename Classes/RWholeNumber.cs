@@ -48,7 +48,7 @@ namespace RotomecaLib
 
     public override void Add(INumber value)
     {
-      Value += value.Value;
+      Value += (long)value.Value;
     }
 
     public override TypeCode GetTypeCode()
@@ -63,7 +63,7 @@ namespace RotomecaLib
 
     public override void Remove(INumber value)
     {
-      Value -= value.Value;
+      Value -= (long)value.Value;
     }
 
     public override dynamic Value
@@ -100,12 +100,18 @@ namespace RotomecaLib
     }
   }
 
-  public class RNumberFloat
+  public sealed class RNumberFloat : ARotomecaNumber
   {
     private dynamic _number;
 
     public RNumberFloat(float number)
     {
+      _number = _Set(number);
+    }
+
+    private dynamic _Set(dynamic number)
+    {
+      dynamic _number;
       if (number >= float.MinValue && number <= float.MaxValue)
       {
         _number = number;
@@ -114,23 +120,24 @@ namespace RotomecaLib
       {
         _number = (double)number;
       }
+
+      return _number;
     }
 
-    public dynamic Value
+    public override dynamic Value
     {
       get { return _number; }
       set
       {
-        float floatValue;
         if (value is float)
         {
-          _number = (float)value;
+          _number = _Set(value);
         }
         else if (value is double)
         {
-          _number = (double)value;
+          _number = _Set(value);
         }
-        else if (float.TryParse(value.ToString(), out floatValue))
+        else if (float.TryParse(value.ToString(), out float floatValue))
         {
           Value = floatValue;
         }
@@ -140,9 +147,29 @@ namespace RotomecaLib
         }
       }
     }
+
+    public override void Add(INumber value)
+    {
+      Value += (double)value.Value;
+    }
+
+    public override TypeCode GetTypeCode()
+    {
+      return Value.GetTypeCode();
+    }
+
+    public override bool IsEqualTo<T>(T value)
+    {
+      return value.Equals(Value);
+    }
+
+    public override void Remove(INumber value)
+    {
+      Value -= (double)value.Value;
+    }
   }
 
-  public class RotomecaNumber
+  public sealed class RotomecaNumber : ARotomecaNumber
   {
     private dynamic _number;
 
@@ -158,10 +185,30 @@ namespace RotomecaLib
       }
     }
 
-    public dynamic Value
+    public override dynamic Value
     {
       get { return _number.Value; }
       set { _number.Value = new RotomecaNumber(value); }
+    }
+
+    public override void Add(INumber value)
+    {
+      Value += value.Value;
+    }
+
+    public override TypeCode GetTypeCode()
+    {
+      return Value.GetTypeCode();
+    }
+
+    public override bool IsEqualTo<T>(T value)
+    {
+      return value.Equals(Value);
+    }
+
+    public override void Remove(INumber value)
+    {
+      Value -= value.Value;
     }
   }
 }
