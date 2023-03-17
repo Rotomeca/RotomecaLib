@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RotomecaLib
 {
-  public class RWholeNumber
+  public sealed class RWholeNumber : ARotomecaNumber
   {
     private dynamic _number; // la variable peut changer de type selon le nombre stocké
 
@@ -20,47 +20,75 @@ namespace RotomecaLib
 
     private void _Init(dynamic number)
     {
+      _number = _Set(number);
+    }
+
+    private dynamic _Set(dynamic number)
+    {
+      dynamic r;
       if (number >= sbyte.MinValue && number <= sbyte.MaxValue)
       {
-        _number = (sbyte)number;
+        r = (sbyte)number;
       }
       else if (number >= short.MinValue && number <= short.MaxValue)
       {
-        _number = (short)number;
+        r = (short)number;
       }
       else if (number >= int.MinValue && number <= int.MaxValue)
       {
-        _number = (int)number;
+        r = (int)number;
       }
       else
       {
-        _number = (long)number;
+        r = (long)number;
       }
+
+      return r;
     }
 
-    public dynamic Value
+    public override void Add(INumber value)
+    {
+      Value += value.Value;
+    }
+
+    public override TypeCode GetTypeCode()
+    {
+      return Value.GetTypeCode();
+    }
+
+    public override bool IsEqualTo<T>(T value)
+    {
+      return value.Equals(Value);
+    }
+
+    public override void Remove(INumber value)
+    {
+      Value -= value.Value;
+    }
+
+    public override dynamic Value
     {
       get { return _number; }
       set
       {
-        int intValue;
+
         if (value is sbyte)
         {
-          _number = (sbyte)value;
+          _number = _Set(value);
         }
         else if (value is short)
         {
-          _number = (short)value;
+          _number = _Set(value);
         }
         else if (value is int)
         {
-          _number = (int)value;
+          _number = _Set(value);
         }
         else if (value is long)
         {
-          _number = (long)value;
+          _number = _Set(value);
         }
-        else if (int.TryParse(value.ToString(), out intValue)) // essaie de convertir en int
+        else if (int.TryParse(value.ToString(), out int intValue)) // essaie de convertir en int
         {
           Value = intValue; // récursion pour choisir la bonne taille de variable
         }
@@ -133,7 +161,7 @@ namespace RotomecaLib
     public dynamic Value
     {
       get { return _number.Value; }
-      set { _number.Value = value; }
+      set { _number.Value = new RotomecaNumber(value); }
     }
   }
 }
