@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RotomecaLib
+namespace RotomecaLib.Classes
 {
   public class Encyclopedie<TCle, TValeur> : RotomecaObject, IDictionary<TCle, TValeur>
   {

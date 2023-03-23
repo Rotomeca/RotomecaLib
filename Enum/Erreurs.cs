@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace RotomecaLib.Enum
+namespace RotomecaLib
 {
   public enum CodeErreur
   {

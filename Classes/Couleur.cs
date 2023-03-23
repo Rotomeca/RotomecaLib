@@ -69,7 +69,15 @@ namespace RotomecaLib
                    Alpha == other.Alpha;
         }
 
-        public static Couleur ROUGE => new Couleur(CouleurMode255.MAX, CouleurMode255.MIN, CouleurMode255.MIN);
+    public override int GetHashCode()
+    {
+      int hashCode = -1170380362;
+      hashCode = hashCode * -1521134295 + base.GetHashCode();
+      hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Hexadecimal);
+      return hashCode;
+    }
+
+    public static Couleur ROUGE => new Couleur(CouleurMode255.MAX, CouleurMode255.MIN, CouleurMode255.MIN);
         public static Couleur BLEU => new Couleur(CouleurMode255.MIN, CouleurMode255.MIN, CouleurMode255.MAX);
         public static Couleur VERT => new Couleur(CouleurMode255.MIN, CouleurMode255.MAX, CouleurMode255.MIN);
         public static Couleur NOIR => new Couleur(CouleurMode255.MIN, CouleurMode255.MIN, CouleurMode255.MIN);
