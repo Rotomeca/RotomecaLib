@@ -153,5 +153,8 @@ namespace RotomecaLib
     {
       return Value.ToString();
     }
+
+    public abstract void Multiply(INumber value);
+    public abstract void Divide(INumber value);
   }
 }
