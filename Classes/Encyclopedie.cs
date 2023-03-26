@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RotomecaLib.Classes
+namespace RotomecaLib
 {
   public class Encyclopedie<TCle, TValeur> : RotomecaObject, IDictionary<TCle, TValeur>
   {
@@ -117,7 +117,7 @@ namespace RotomecaLib.Classes
   }
 }
 
-namespace RotomecaLib.Classes.Extentions
+namespace RotomecaLib.Exceptions
 {
   public class EncyclopedieException<TCle, TValeur> : Exception
   {
@@ -137,12 +137,12 @@ namespace System.Linq
 {
   public static class RotomecaLib_Extention_Encyclopedie
   {
-    public static RotomecaLib.Classes.Encyclopedie<TCle, TValeur> ToEncyclopedie<TOriginal,TCle, TValeur>(this IEnumerable<TOriginal> originals, RotomecaLib.Delegates.EnCleEncyclopedie<TOriginal,TCle> selectionneurDeCle, RotomecaLib.Delegates.EnValueEncyclopedie<TOriginal, TValeur> selectionneurDeValeur, bool errorOnDouble = true)
+    public static RotomecaLib.Encyclopedie<TCle, TValeur> ToEncyclopedie<TOriginal,TCle, TValeur>(this IEnumerable<TOriginal> originals, RotomecaLib.Delegates.EnCleEncyclopedie<TOriginal,TCle> selectionneurDeCle, RotomecaLib.Delegates.EnValueEncyclopedie<TOriginal, TValeur> selectionneurDeValeur, bool errorOnDouble = true)
     {
       return _ToEncyclopedie(originals, (item) => selectionneurDeCle(item), (item) => selectionneurDeValeur(item), errorOnDouble);
     }
 
-    private static RotomecaLib.Classes.Encyclopedie<TCle, TValeur> _ToEncyclopedie<TOriginal, TCle, TValeur>(this IEnumerable<TOriginal> originals, Func<TOriginal, TCle> selectionneurDeCle, Func<TOriginal, TValeur> selectionneurDeValeur, bool errorOnDouble = true)
+    private static RotomecaLib.Encyclopedie<TCle, TValeur> _ToEncyclopedie<TOriginal, TCle, TValeur>(this IEnumerable<TOriginal> originals, Func<TOriginal, TCle> selectionneurDeCle, Func<TOriginal, TValeur> selectionneurDeValeur, bool errorOnDouble = true)
     {
       if (originals.Any())
       {
@@ -150,17 +150,17 @@ namespace System.Linq
         {
           try
           {
-            return new RotomecaLib.Classes.Encyclopedie<TCle, TValeur>(originals.ToDictionary(selectionneurDeCle, selectionneurDeValeur));
+            return new RotomecaLib.Encyclopedie<TCle, TValeur>(originals.ToDictionary(selectionneurDeCle, selectionneurDeValeur));
           }
           catch (Exception e)
           {
 
-            throw new RotomecaLib.Classes.Extentions.EncyclopedieException<TCle, TValeur>(null, e.Message, originals, selectionneurDeCle, selectionneurDeValeur);
+            throw new RotomecaLib.Exceptions.EncyclopedieException<TCle, TValeur>(null, e.Message, originals, selectionneurDeCle, selectionneurDeValeur);
           }
         }
         else
         {
-          RotomecaLib.Classes.Encyclopedie<TCle, TValeur> retour = new RotomecaLib.Classes.Encyclopedie<TCle, TValeur>();
+          RotomecaLib.Encyclopedie<TCle, TValeur> retour = new RotomecaLib.Encyclopedie<TCle, TValeur>();
           Parallel.ForEach(originals, (item) =>
           {
             retour[selectionneurDeCle(item)] = selectionneurDeValeur(item);
@@ -168,7 +168,7 @@ namespace System.Linq
           return retour;
         }
       }
-      return new RotomecaLib.Classes.Encyclopedie<TCle, TValeur>();
+      return new RotomecaLib.Encyclopedie<TCle, TValeur>();
     }
   }
 }

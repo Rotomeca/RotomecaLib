@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace RotomecaLib
 {
   [RotomecaLogging(typeof(Log.RotomecaLog))]
-  public class RotomecaArray<T> : Interfaces.IRotomecaArray<T>, IEquatable<RotomecaArray<T>>
+  public class SizedArray<T> : Interfaces.IRotolibArray<T>, IEquatable<SizedArray<T>>
   {
     private static Type _loggerTypeModifier;
     private Interfaces.IRotomecaLog _logger;
@@ -20,18 +20,18 @@ namespace RotomecaLib
 
     public uint MaxLength => _size;
 
-    public RotomecaArray() {
+    public SizedArray() {
       _array = new T[0];
       _size = 0;
     }
 
-    public RotomecaArray(uint size)
+    public SizedArray(uint size)
     {
       _array = new T[size];
       _size = size;
     }
 
-    public RotomecaArray(uint size, params T[] datas)
+    public SizedArray(uint size, params T[] datas)
     {
       _array = new T[size];
       _size = size;
@@ -39,7 +39,7 @@ namespace RotomecaLib
       _Init(datas);
     }
 
-    public RotomecaArray(uint size, IEnumerable<T> datas)
+    public SizedArray(uint size, IEnumerable<T> datas)
     {
       _array = new T[size];
       _size = size;
@@ -187,10 +187,10 @@ namespace RotomecaLib
 
     public override bool Equals(object obj)
     {
-      return Equals(obj as RotomecaArray<T>);
+      return Equals(obj as SizedArray<T>);
     }
 
-    public bool Equals(RotomecaArray<T> other)
+    public bool Equals(SizedArray<T> other)
     {
       return other != null &&
              _size == other._size &&
@@ -205,12 +205,12 @@ namespace RotomecaLib
       return hashCode;
     }
 
-    public static bool operator ==(RotomecaArray<T> left, RotomecaArray<T> right)
+    public static bool operator ==(SizedArray<T> left, SizedArray<T> right)
     {
-      return EqualityComparer<RotomecaArray<T>>.Default.Equals(left, right);
+      return EqualityComparer<SizedArray<T>>.Default.Equals(left, right);
     }
 
-    public static bool operator !=(RotomecaArray<T> left, RotomecaArray<T> right)
+    public static bool operator !=(SizedArray<T> left, SizedArray<T> right)
     {
       return !(left == right);
     }

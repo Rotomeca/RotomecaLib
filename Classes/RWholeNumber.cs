@@ -189,10 +189,10 @@ namespace RotomecaLib
         case Calculcate.fois:
           return new RWholeNumber(l).MultiplyEx(r);
         default:
-          throw new Exception();
+          break;
       }
 
-      throw new Exception();
+      throw new Exceptions.RotomecaCalculationNumberException<Calculcate>(l, r, c, "RWholeNumber/_Calculate", "Cette méthode de calculation n'a pas été implémentée !");
     }
 
     private static RNumberFloat _Calculate(CalculcateFloat f, dynamic l, dynamic r)
@@ -207,7 +207,7 @@ namespace RotomecaLib
           break;
       }
 
-      throw new Exception();
+      throw new Exceptions.RotomecaCalculationNumberException<CalculcateFloat>(l, r, f, "RWholeNumber/_Calculate", "Cette méthode de calculation n'a pas été implémentée !");
     }
 
     public override bool Equals(object obj)

@@ -145,10 +145,10 @@ namespace RotomecaLib
         case Calculcate.diviser:
           return new RotomecaNumber(l).DivideEx(r);
         default:
-          throw new Exception();
+          break;
       }
 
-      throw new Exception();
+      throw new Exceptions.RotomecaCalculationNumberException<Calculcate>(l, r, c, "RotomecaNumber/_Calculate", "Cette méthode de calculation n'a pas été implémentée !");
     }
     #endregion
 
@@ -765,7 +765,39 @@ namespace RotomecaLib
     #endregion
 
     #region Cast
+    public static implicit operator RotomecaNumber(sbyte r)
+    {
+      return new RotomecaNumber(r);
+    }
+    public static implicit operator RotomecaNumber(short r)
+    {
+      return new RotomecaNumber(r);
+    }
     public static implicit operator RotomecaNumber(int r)
+    {
+      return new RotomecaNumber(r);
+    }
+    public static implicit operator RotomecaNumber(long r)
+    {
+      return new RotomecaNumber(r);
+    }
+    public static implicit operator RotomecaNumber(ushort r)
+    {
+      return new RotomecaNumber(r);
+    }
+    public static implicit operator RotomecaNumber(uint r)
+    {
+      return new RotomecaNumber(r);
+    }
+    public static implicit operator RotomecaNumber(ulong r)
+    {
+      return new RotomecaNumber(r);
+    }
+    public static implicit operator RotomecaNumber(float r)
+    {
+      return new RotomecaNumber(r);
+    }
+    public static implicit operator RotomecaNumber(double r)
     {
       return new RotomecaNumber(r);
     }

@@ -6,6 +6,7 @@ namespace RotomecaLib
 {
   public enum CodeErreur
   {
+    NUMBER_CALCULATION_EXCEPTION = 1,
     EXCEL_SAVE_ERROR = 500,
   }
 

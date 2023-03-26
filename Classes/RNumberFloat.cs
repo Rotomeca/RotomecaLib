@@ -237,7 +237,7 @@ namespace RotomecaLib
           break;
       }
 
-      throw new Exception();
+      throw new Exceptions.RotomecaCalculationNumberException<Calculcate>(l, r, c, "RNumberFloat/_Calculate", "Cette méthode de calculation n'a pas été implémentée !");
     }
 
 
