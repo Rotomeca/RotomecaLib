@@ -25,11 +25,6 @@ namespace RotomecaLib
       _Init(number);
     }
 
-    //public RWholeNumber(RWholeNumber number)
-    //{
-    //  _Init(number.Value);
-    //}
-
     private void _Init(dynamic number)
     {
       _number = _Set(number);

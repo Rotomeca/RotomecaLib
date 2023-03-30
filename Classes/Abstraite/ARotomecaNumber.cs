@@ -1,21 +1,52 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace RotomecaLib
 {
+  /// <summary>
+  /// Classe de base pour les nombres
+  /// </summary>
   public abstract class ARotomecaNumber : INumber
   {
+    /// <summary>
+    /// Valeur de la classe
+    /// </summary>
     public abstract dynamic Value { get; set; }
-
+    /// <summary>
+    /// Additionne la valeur à la classe
+    /// </summary>
+    /// <param name="value">Value à ajouter</param>
     public abstract void Add(INumber value);
+    /// <summary>
+    /// Récupère le type code de la classe
+    /// </summary>
+    /// <returns>Type code de la classe</returns>
     public abstract TypeCode GetTypeCode();
+    /// <summary>
+    /// Vérifie si la classe est égale à une valeur. 
+    /// </summary>
+    /// <typeparam name="T"><see cref="INumber"/> ou nombre/flottant</typeparam>
+    /// <param name="value">Valeur à comparer</param>
+    /// <returns></returns>
     public abstract bool IsEqualTo<T>(T value);
+    /// <summary>
+    /// Additionne négativement la valeur à la classe
+    /// </summary>
+    /// <param name="value">Value à retirer</param>
     public abstract void Remove(INumber value);
+    /// <summary>
+    /// Remet la classe à zéro
+    /// </summary>
     public void Reset()
     {
       Value = 0;
     }
+    /// <summary>
+    /// Actions à faire lors d'une conversion de type
+    /// </summary>
+    /// <typeparam name="T">Type de retour</typeparam>
+    /// <param name="provider">Formatter la sortie</param>
+    /// <param name="callback">Action à faire si il n'y a pas de formatteur</param>
+    /// <returns>Variable convertie</returns>
     protected virtual T _Provider<T>(IFormatProvider provider, Func<dynamic, T> callback)
     {
       if (!(provider is null)) return (T)provider.GetFormat(Value);
@@ -149,12 +180,23 @@ namespace RotomecaLib
       return _Provider(provider, x => (ulong)x);
     }
 
+    /// <summary>
+    /// Convertit la classe en <see cref="string"/>
+    /// </summary>
+    /// <returns>Nomber sous la forme d'un <see cref="string"/></returns>
     public override string ToString()
     {
       return Value.ToString();
     }
-
+    /// <summary>
+    /// Multiplie la valeur à la classe
+    /// </summary>
+    /// <param name="value">Valeur à multiplier</param>
     public abstract void Multiply(INumber value);
+    /// <summary>
+    /// Divise la classe par la valeur
+    /// </summary>
+    /// <param name="value"></param>
     public abstract void Divide(INumber value);
   }
 }
