@@ -11,11 +11,31 @@ namespace RotomecaLib
     /// Valeur de la classe
     /// </summary>
     public abstract dynamic Value { get; set; }
+
+    #region Changement de valeur
     /// <summary>
     /// Additionne la valeur à la classe
     /// </summary>
     /// <param name="value">Value à ajouter</param>
     public abstract void Add(INumber value);
+    /// <summary>
+    /// Multiplie la valeur à la classe
+    /// </summary>
+    /// <param name="value">Valeur à multiplier</param>
+    public abstract void Multiply(INumber value);
+    /// <summary>
+    /// Divise la classe par la valeur
+    /// </summary>
+    /// <param name="value"></param>
+    public abstract void Divide(INumber value);
+    /// <summary>
+    /// Additionne négativement la valeur à la classe
+    /// </summary>
+    /// <param name="value">Value à retirer</param>
+    public abstract void Remove(INumber value);
+    #endregion
+
+    #region Autres Abstractions
     /// <summary>
     /// Récupère le type code de la classe
     /// </summary>
@@ -28,11 +48,9 @@ namespace RotomecaLib
     /// <param name="value">Valeur à comparer</param>
     /// <returns></returns>
     public abstract bool IsEqualTo<T>(T value);
-    /// <summary>
-    /// Additionne négativement la valeur à la classe
-    /// </summary>
-    /// <param name="value">Value à retirer</param>
-    public abstract void Remove(INumber value);
+    #endregion
+
+    #region Divers
     /// <summary>
     /// Remet la classe à zéro
     /// </summary>
@@ -53,67 +71,133 @@ namespace RotomecaLib
 
       return callback(Value);
     }
+    #endregion
 
+    #region Convertisseur
+    /// <summary>
+    /// Convertit en boolean
+    /// </summary>
+    /// <param name="provider">Format</param>
+    /// <returns>bool</returns>
     public bool ToBoolean(IFormatProvider provider)
     {
       return _Provider<bool>(provider, x => x > 0);
     }
-
+    /// <summary>
+    /// Convertit en byte
+    /// </summary>
+    /// <param name="provider">Format</param>
+    /// <returns>byte</returns>
     public byte ToByte(IFormatProvider provider)
     {
       return _Provider(provider, x => (byte)x);
     }
 
+    /// <summary>
+    /// Convertit en charactère
+    /// </summary>
+    /// <param name="provider">Format</param>
+    /// <returns>char</returns>
     public char ToChar(IFormatProvider provider)
     {
       return _Provider(provider, x => char.ConvertFromUtf32(ToInt32(null))[0]);
     }
 
+    /// <summary>
+    /// Convertit en Datetime
+    /// </summary>
+    /// <param name="provider">Format</param>
+    /// <returns>Date</returns>
     public DateTime ToDateTime(IFormatProvider provider)
     {
       return _Provider(provider, x => new DateTime(x));
     }
 
+    /// <summary>
+    /// Convertit en decimal
+    /// </summary>
+    /// <param name="provider">Format</param>
+    /// <returns>Decimal</returns>
     public decimal ToDecimal(IFormatProvider provider)
     {
       return _Provider(provider, x => (decimal)x);
     }
 
+    /// <summary>
+    /// Convertit en double
+    /// </summary>
+    /// <param name="provider">Format</param>
+    /// <returns>double</returns>
     public double ToDouble(IFormatProvider provider)
     {
       return _Provider(provider, x => (double)x);
     }
 
+    /// <summary>
+    /// Convertit en short
+    /// </summary>
+    /// <param name="provider">Format</param>
+    /// <returns>short</returns>
     public short ToInt16(IFormatProvider provider)
     {
       return _Provider(provider, x => (short)x);
     }
 
+    /// <summary>
+    /// Convertit en int
+    /// </summary>
+    /// <param name="provider">Format</param>
+    /// <returns>int</returns>
     public int ToInt32(IFormatProvider provider)
     {
       return _Provider(provider, x => (int)x);
     }
 
+    /// <summary>
+    /// Convertit en long
+    /// </summary>
+    /// <param name="provider">Format</param>
+    /// <returns>long</returns>
     public long ToInt64(IFormatProvider provider)
     {
       return _Provider(provider, x => (long)x);
     }
 
+    /// <summary>
+    /// Convertit en sByte
+    /// </summary>
+    /// <param name="provider">Format</param>
+    /// <returns>sByte</returns>
     public sbyte ToSByte(IFormatProvider provider)
     {
       return _Provider(provider, x => (sbyte)x);
     }
 
+    /// <summary>
+    /// Convertit en float
+    /// </summary>
+    /// <param name="provider">Format</param>
+    /// <returns>Float</returns>
     public float ToSingle(IFormatProvider provider)
     {
       return _Provider(provider, x => (float)x);
     }
 
+    /// <summary>
+    /// Convertit en chaine de charactères
+    /// </summary>
+    /// <param name="provider">Format</param>
+    /// <returns>string</returns>
     public string ToString(IFormatProvider provider)
     {
       return _Provider(provider, x => ToString());
     }
 
+    /// <summary>
+    /// Vérifie si il est possible de convertir la classe
+    /// </summary>
+    /// <param name="conversionType">Type dans lequel on veut être convertit</param>
+    /// <returns>vari si on peut convertir</returns>
     public bool CanConvert(Type conversionType)
     {
       if (conversionType == typeof(string) ||
@@ -130,6 +214,12 @@ namespace RotomecaLib
       }
     }
 
+    /// <summary>
+    /// Convertit dans un type
+    /// </summary>
+    /// <param name="conversionType">Type souhaité</param>
+    /// <param name="provider">Format</param>
+    /// <returns>Objet</returns>
     public object ToType(Type conversionType, IFormatProvider provider)
     {
       // Vérifie si la conversion est possible
@@ -165,16 +255,31 @@ namespace RotomecaLib
       }
     }
 
+    /// <summary>
+    /// Convertit en ushort
+    /// </summary>
+    /// <param name="provider">Format</param>
+    /// <returns>ushort</returns>
     public ushort ToUInt16(IFormatProvider provider)
     {
       return _Provider(provider, x => (ushort)x);
     }
 
+    /// <summary>
+    /// Convertit en uint
+    /// </summary>
+    /// <param name="provider">Format</param>
+    /// <returns>uint</returns>
     public uint ToUInt32(IFormatProvider provider)
     {
       return _Provider(provider, x => (uint)x);
     }
 
+    /// <summary>
+    /// Convertit en ulong
+    /// </summary>
+    /// <param name="provider">Format</param>
+    /// <returns>ulong</returns>
     public ulong ToUInt64(IFormatProvider provider)
     {
       return _Provider(provider, x => (ulong)x);
@@ -188,15 +293,8 @@ namespace RotomecaLib
     {
       return Value.ToString();
     }
-    /// <summary>
-    /// Multiplie la valeur à la classe
-    /// </summary>
-    /// <param name="value">Valeur à multiplier</param>
-    public abstract void Multiply(INumber value);
-    /// <summary>
-    /// Divise la classe par la valeur
-    /// </summary>
-    /// <param name="value"></param>
-    public abstract void Divide(INumber value);
+
+    #endregion
+
   }
 }
